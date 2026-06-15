@@ -1,0 +1,393 @@
+/* ==================== 基础重置 ==================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 380px;
+  min-height: 420px;
+  font-family: -apple-system, "Microsoft YaHei", "PingFang SC", "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  color: #333;
+  background: #fff;
+  overflow-x: hidden;
+}
+
+/* ==================== 顶部状态栏 ==================== */
+.header {
+  padding: 12px 14px 10px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.header-stats {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+/* 开关 */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.3);
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+.switch-slider::before {
+  content: '';
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.switch input:checked + .switch-slider {
+  background: #4CAF50;
+}
+
+.switch input:checked + .switch-slider::before {
+  transform: translateX(18px);
+}
+
+/* ==================== 标签页导航 ==================== */
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #eee;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px 4px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  font-size: 12px;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tab:hover {
+  color: #555;
+}
+
+.tab.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+  font-weight: 600;
+}
+
+/* ==================== 面板 ==================== */
+.panel {
+  display: none;
+  padding: 10px 14px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.panel.active {
+  display: block;
+}
+
+/* ==================== 添加规则区域 ==================== */
+.add-rule {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+#ruleInput {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+#ruleInput:focus {
+  border-color: #667eea;
+}
+
+/* ==================== 按钮 ==================== */
+.btn {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: #f5f5f5;
+}
+
+.btn-primary {
+  background: #667eea;
+  color: #fff;
+  border-color: #667eea;
+}
+
+.btn-primary:hover {
+  background: #5a6fd6;
+}
+
+.btn-sm {
+  padding: 3px 8px;
+  font-size: 11px;
+}
+
+.btn-danger {
+  color: #c0392b;
+  border-color: #e0c0c0;
+}
+
+.btn-danger:hover {
+  background: #fdecea;
+}
+
+/* ==================== 规则列表 ==================== */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #888;
+  font-weight: 500;
+}
+
+.rule-list {
+  list-style: none;
+}
+
+.rule-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  background: #fafafa;
+  transition: background 0.15s;
+}
+
+.rule-item:hover {
+  background: #f0f0f0;
+}
+
+.rule-item .rule-toggle {
+  flex-shrink: 0;
+}
+
+.rule-item .rule-text {
+  flex: 1;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rule-item .rule-text.rule-disabled {
+  color: #bbb;
+  text-decoration: line-through;
+}
+
+.rule-item .rule-hits {
+  flex-shrink: 0;
+  font-size: 10px;
+  color: #aaa;
+  min-width: 36px;
+  text-align: right;
+}
+
+.rule-item .rule-delete {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.rule-item .rule-delete:hover {
+  color: #e74c3c;
+}
+
+/* 预设标签 */
+.rule-item .rule-preset-badge {
+  font-size: 9px;
+  color: #667eea;
+  background: #eef0fb;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+/* ==================== 发布者列表 ==================== */
+.publisher-list {
+  list-style: none;
+}
+
+.publisher-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+  background: #fafafa;
+}
+
+.publisher-item .pub-level {
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.publisher-item .pub-name {
+  flex: 1;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.publisher-item .pub-count {
+  flex-shrink: 0;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.pub-count-light { background: #f0f0f0; color: #888; }
+.pub-count-medium { background: #fef5e7; color: #e67e22; }
+.pub-count-heavy { background: #fdecea; color: #c0392b; }
+
+.publisher-item .pub-actions {
+  flex-shrink: 0;
+  display: flex;
+  gap: 2px;
+}
+
+.publisher-item .pub-btn {
+  background: none;
+  border: 1px solid transparent;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.publisher-item .pub-btn:hover {
+  background: #eee;
+  color: #555;
+}
+
+.publisher-item .pub-btn.trust:hover {
+  color: #27ae60;
+}
+
+.publisher-item .pub-btn.clear:hover {
+  color: #e74c3c;
+}
+
+.publisher-item.whitelisted {
+  border-left: 2px solid #27ae60;
+}
+
+/* ==================== 已读历史面板 ==================== */
+.read-stats {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background: #fafafa;
+  border-radius: 6px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.stat-label {
+  display: block;
+  font-size: 11px;
+  color: #999;
+  margin-top: 2px;
+}
+
+.read-actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* ==================== 通用 ==================== */
+.hidden {
+  display: none !important;
+}
+
+.empty-state {
+  text-align: center;
+  color: #bbb;
+  padding: 24px 0;
+  font-size: 13px;
+}
+
+.preset-panel {
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+  margin-top: 8px;
+}

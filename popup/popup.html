@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>社交媒体净化器</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <script>console.log('[Popup] HTML 脚本已执行');</script>
+  <!-- 顶部状态栏 -->
+  <header class="header">
+    <div class="header-top">
+      <span class="logo">🧹 社交媒体净化器</span>
+      <label class="switch" title="全局开关">
+        <input type="checkbox" id="engineToggle" checked>
+        <span class="switch-slider"></span>
+      </label>
+    </div>
+    <div class="header-stats">
+      <span id="platformLabel">当前平台: --</span>
+      <span id="statsSummary">已过滤: 0 条 · 已读: 0 条</span>
+    </div>
+    <div id="initStatus" style="font-size:10px;opacity:0.7;margin-top:4px;">初始化中...</div>
+  </header>
+
+  <!-- 标签页导航 -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="rules">过滤规则</button>
+    <button class="tab" data-tab="publishers">发布者档案</button>
+    <button class="tab" data-tab="readhistory">已读历史</button>
+  </nav>
+
+  <!-- ==================== 过滤规则面板 ==================== -->
+  <section class="panel active" id="panel-rules">
+    <div class="add-rule">
+      <input
+        type="text"
+        id="ruleInput"
+        placeholder="描述你不想看的内容...（如「屏蔽焦虑营销」）"
+        autocomplete="off"
+      >
+      <button id="addRuleBtn" class="btn btn-primary">添加</button>
+    </div>
+
+    <div class="section-header">
+      <span>我的规则 (<span id="ruleCount">0</span>)</span>
+      <button id="addPresetBtn" class="btn btn-sm">从预设添加</button>
+    </div>
+
+    <ul id="ruleList" class="rule-list"></ul>
+
+    <!-- 预设规则面板（默认隐藏） -->
+    <div id="presetPanel" class="preset-panel hidden">
+      <div class="section-header">
+        <span>预设规则</span>
+        <button id="closePresetBtn" class="btn btn-sm">关闭</button>
+      </div>
+      <ul id="presetList" class="rule-list"></ul>
+    </div>
+  </section>
+
+  <!-- ==================== 发布者档案面板 ==================== -->
+  <section class="panel" id="panel-publishers">
+    <div class="section-header">
+      <span>发布者档案 (<span id="publisherCount">0</span>)</span>
+      <button id="clearAllPublishersBtn" class="btn btn-sm btn-danger">清除全部</button>
+    </div>
+    <ul id="publisherList" class="publisher-list"></ul>
+    <div id="noPublishers" class="empty-state">暂无发布者记录</div>
+  </section>
+
+  <!-- ==================== 已读历史面板 ==================== -->
+  <section class="panel" id="panel-readhistory">
+    <div class="section-header">
+      <span>已读历史统计</span>
+    </div>
+    <div class="read-stats">
+      <div class="stat-item">
+        <span class="stat-value" id="readTotal">0</span>
+        <span class="stat-label">总计已读</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="readToday">0</span>
+        <span class="stat-label">今日已读</span>
+      </div>
+    </div>
+    <div class="read-actions">
+      <button id="clearReadPlatformBtn" class="btn btn-sm">清除当前平台</button>
+      <button id="clearReadAllBtn" class="btn btn-sm btn-danger">清除全部已读</button>
+    </div>
+  </section>
+
+  <script src="../shared/storage.js"></script>
+  <script src="../shared/rule-types.js"></script>
+  <script src="../shared/message-types.js"></script>
+  <script src="../rules/presets.js"></script>
+  <script src="../content/core/rule-parser.js"></script>
+  <script src="../content/core/filter-engine.js"></script>
+  <script src="../content/core/publisher-tracker.js"></script>
+  <script src="../content/core/read-history.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

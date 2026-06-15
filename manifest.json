@@ -1,0 +1,83 @@
+{
+  "manifest_version": 3,
+  "name": "社交媒体净化器",
+  "version": "0.1.0",
+  "description": "智能过滤中文社交媒体信息流——用自然语言描述不想看的内容，自动折叠/淡化匹配的帖子",
+  "author": "社交媒体净化器",
+  "homepage_url": "https://github.com/user/social-media-cleaner",
+
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+
+  "host_permissions": [
+    "https://weibo.com/*",
+    "https://*.weibo.com/*",
+    "https://xiaohongshu.com/*",
+    "https://*.xiaohongshu.com/*"
+  ],
+
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://weibo.com/*",
+        "https://*.weibo.com/*",
+        "https://xiaohongshu.com/*",
+        "https://*.xiaohongshu.com/*"
+      ],
+      "js": [
+        "shared/storage.js",
+        "shared/rule-types.js",
+        "shared/message-types.js",
+        "rules/presets.js",
+        "content/platforms/platform-base.js",
+        "content/platforms/weibo.js",
+        "content/platforms/xiaohongshu.js",
+        "content/core/rule-parser.js",
+        "content/core/filter-engine.js",
+        "content/core/post-scanner.js",
+        "content/core/publisher-tracker.js",
+        "content/core/read-history.js",
+        "content/ui/overlay.js",
+        "content/ui/reason-tag.js",
+        "content/ui/publisher-tag.js",
+        "content/ui/read-dim.js",
+        "content/content-entry.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "社交媒体净化器",
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "48": "assets/icons/icon-48.png",
+      "128": "assets/icons/icon-128.png"
+    }
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": [
+        "https://weibo.com/*",
+        "https://*.weibo.com/*",
+        "https://xiaohongshu.com/*",
+        "https://*.xiaohongshu.com/*"
+      ]
+    }
+  ]
+}
