@@ -88,6 +88,3 @@ social-feed-cleaner/
 
 完整架构设计见 [DESIGN.md](DESIGN.md)
 
-## License
-
-MIT
