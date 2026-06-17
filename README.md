@@ -17,6 +17,7 @@
 
 - ✅ 微博（weibo.com）
 - ✅ 小红书（xiaohongshu.com）
+- ✅ 抖音（douyin.com）
 
 ## 安装
 
@@ -64,7 +65,8 @@ social-feed-cleaner/
 │   │   └── read-history.js    #   已读记录
 │   ├── platforms/             # 平台适配器
 │   │   ├── weibo.js           #   微博
-│   │   └── xiaohongshu.js     #   小红书
+│   │   ├── xiaohongshu.js     #   小红书
+│   │   └── douyin.js          #   抖音
 │   └── ui/                    # 界面组件
 │       ├── overlay.js         #   折叠遮罩
 │       ├── publisher-tag.js   #   发布者标签
