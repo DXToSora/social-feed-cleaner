@@ -27,6 +27,9 @@
   } else if (XiaohongshuAdapter.matchURL(url)) {
     platform = XiaohongshuAdapter;
     platformName = 'xiaohongshu';
+  } else if (DouyinAdapter.matchURL(url)) {
+    platform = DouyinAdapter;
+    platformName = 'douyin';
   }
 
   if (!platform) {

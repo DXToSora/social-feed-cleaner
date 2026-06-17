@@ -112,7 +112,7 @@ async function init() {
 }
 
 function currentPlatformName(name) {
-  const map = { weibo: '微博', xiaohongshu: '小红书' };
+  const map = { weibo: '微博', xiaohongshu: '小红书', douyin: '抖音' };
   return map[name] || name || '--';
 }
 

@@ -15,7 +15,8 @@
     "https://weibo.com/*",
     "https://*.weibo.com/*",
     "https://xiaohongshu.com/*",
-    "https://*.xiaohongshu.com/*"
+    "https://*.xiaohongshu.com/*",
+    "https://*.douyin.com/*"
   ],
 
   "icons": {
@@ -34,7 +35,8 @@
         "https://weibo.com/*",
         "https://*.weibo.com/*",
         "https://xiaohongshu.com/*",
-        "https://*.xiaohongshu.com/*"
+        "https://*.xiaohongshu.com/*",
+        "https://*.douyin.com/*"
       ],
       "js": [
         "shared/storage.js",
@@ -44,6 +46,7 @@
         "content/platforms/platform-base.js",
         "content/platforms/weibo.js",
         "content/platforms/xiaohongshu.js",
+        "content/platforms/douyin.js",
         "content/core/rule-parser.js",
         "content/core/filter-engine.js",
         "content/core/post-scanner.js",
@@ -76,7 +79,8 @@
         "https://weibo.com/*",
         "https://*.weibo.com/*",
         "https://xiaohongshu.com/*",
-        "https://*.xiaohongshu.com/*"
+        "https://*.xiaohongshu.com/*",
+        "https://*.douyin.com/*"
       ]
     }
   ]
